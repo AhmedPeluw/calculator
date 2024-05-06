@@ -17,6 +17,12 @@
 <body>
     <div class="app container flex flex-col justify-center items-center h-screen">
 
+        @if($errors->any())
+        @foreach ($errors->all() as $error)
+        <div class="error-text mt-1 text-sm">{{ $error}}</div>
+        @endforeach
+        @endif
+
         <div class="container results">
             @if(session('error'))
             <div class="text-center error-text">{{ session('error') }}</div>

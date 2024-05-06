@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\OperationService;
+use App\Http\Requests\CalculatorRequest;
 
 class CalculatorController extends Controller
 {
@@ -19,14 +20,9 @@ class CalculatorController extends Controller
         return view('calculator');
     }
 
-    public function operation(Request $request)
+    public function operation(CalculatorRequest $request)
     {
         try {
-            $request->validate([
-                'operator' => 'required|string|max:1|in:+,-,*,/',
-                'numberOne' => 'required|numeric',
-                'numberTwo' => 'required|numeric',
-            ]);
 
             $operator = $request->input('operator');
             $numberOne = $request->input('numberOne');
